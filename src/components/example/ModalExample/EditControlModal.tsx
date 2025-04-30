@@ -23,7 +23,7 @@ export default function EditControlModal() {
         onClose={closeModal}
         className="max-w-[584px] mt-40"
       >
-        <div className="">
+        <div className="text-start">
           <ExampleFormTwo selectedRowData={null} />
         </div>
       </Modal>

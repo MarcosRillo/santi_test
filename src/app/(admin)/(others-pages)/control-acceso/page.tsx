@@ -1,8 +1,8 @@
 "use client";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import AccessControl from "@/components/control-acceso/AccessControl";
 // import AllFolders from "@/components/file-manager/AllFolders";
 // import AllMediaCard from "@/components/file-manager/AllMediaCard";
-import RecentFileTable from "@/components/control-acceso/RecentFileTable";
 // import StorageDetailsChart from "@/components/file-manager/StorageDetailsChart";
 // import { Metadata } from "next";
 import React, { useState } from "react";
@@ -34,7 +34,7 @@ export default function FileManager() {
       <PageBreadcrumb pageTitle="Control de Acceso" />
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-12">
-          <RecentFileTable setSelectedRowData={setSelectedRowData} />
+          <AccessControl setSelectedRowData={setSelectedRowData} />
         </div>
       </div>
     </div>

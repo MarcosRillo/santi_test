@@ -39,10 +39,11 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
   const [horaHasta, setHoraHasta] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Free");
+  const [impresion, setImpresion] = useState("Local");
   const [marcarAcreditacion, setMarcarAcreditacion] = useState(true);
   const [imprimeSticker, setImprimeSticker] = useState(true);
 
-  const [QR, setQR] = useState(false);
+  const [QR, setQR] = useState(true);
   const [PDF417, setPDF417] = useState(false);
   const [error, setError] = useState("");
 
@@ -63,6 +64,7 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
       setError("");
     }
   }, [QR, PDF417]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({
@@ -72,6 +74,7 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
       fechaHasta,
       horaHasta,
       selectedOption,
+      impresion,
       marcarAcreditacion,
       imprimeSticker,
     });
@@ -163,10 +166,10 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
               <p className="text-red-500 text-sm text-center">{error}</p>
             </div>
           )}
-          <div className="gap-2 p-3 col-span-full">
+          <div className="gap-2 p-3 col-span-full flex items-center justify-start">
             <Label
               htmlFor="test"
-              className="flex items-center justify-center gap-2"
+              className="flex items-center justify-start gap-2"
             >
               <Checkbox
                 checked={isChecked}
@@ -179,7 +182,9 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
               type="number"
               id="test"
               defaultValue="1"
-              className="max-w-3/4 text-center"
+              min="1"
+              className="max-w-2/4 text-center"
+              disabled={!isChecked}
             />
           </div>
           <div className="col-span-2">
@@ -208,6 +213,27 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
               />
             </div>
           </div>
+          <div className="flex items-center gap-3 col-span-full">
+            <Label className="m-0">Impresion:</Label>
+            <div className="flex flex-wrap items-center gap-4">
+              <Radio
+                id="Local"
+                name="impresionSelect"
+                value="Local"
+                label="Local"
+                checked={impresion === "Local"}
+                onChange={() => setImpresion("Local")}
+              />
+              <Radio
+                id="Servidor"
+                name="impresionSelect"
+                value="Servidor"
+                label="Servidor de impresion"
+                checked={impresion === "Servidor"}
+                onChange={() => setImpresion("Servidor")}
+              />
+            </div>
+          </div>
 
           <div className="col-span-2">
             <h4 className="py-4 text-base font-medium text-gray-800 border-b border-gray-200 dark:border-gray-800 dark:text-white/90">
@@ -231,11 +257,11 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
             />
           </div>
 
-          <div className="flex gap-3 col-span-full">
-            <Button size="sm">Guardar cambios</Button>
+          <div className="flex justify-end gap-3 col-span-full">
             <Button size="sm" variant="outline">
               Cancelar
             </Button>
+            <Button size="sm">Guardar cambios</Button>
           </div>
         </div>
       </Form>

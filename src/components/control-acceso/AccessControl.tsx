@@ -82,7 +82,7 @@ type RecentFileTableProps = {
   setSelectedRowData: (row: FileRow | null) => void;
 };
 
-export default function RecentFileTable({
+export default function AccessControl({
   setSelectedRowData,
 }: RecentFileTableProps) {
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
@@ -127,7 +127,7 @@ export default function RecentFileTable({
                 className="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pl-[42px] pr-3.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 xl:w-[300px]"
               />
             </div>
-            <div className="text-center">
+            <div className="">
             <FormInModal />
             </div>
           </div>
@@ -177,13 +177,13 @@ export default function RecentFileTable({
                   <td className="px-6 py-[18px] text-center">
                     <div className="flex items-center justify-center gap-2 ">
                       <button>
-                        <TrashBinIcon className="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-500" />
+                        <TrashBinIcon className="text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-500" />
                       </button>
                         <EditControlModal />
                       <button className="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-500">
                         <PaperPlaneIcon className="w-5 h-5" />
                       </button>
-                      <button className="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-500">
+                      <button className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">
                         <HiOutlinePrinter className="w-5 h-5" />
                       </button>
                     </div>
