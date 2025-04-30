@@ -39,9 +39,12 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
   const [horaHasta, setHoraHasta] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Free");
-  const [autoacreditacion, setAutoacreditacion] = useState(true);
   const [marcarAcreditacion, setMarcarAcreditacion] = useState(true);
   const [imprimeSticker, setImprimeSticker] = useState(true);
+
+  const [QR, setQR] = useState(false);
+  const [PDF417, setPDF417] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (selectedRowData) {
@@ -53,6 +56,13 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
     }
   }, [selectedRowData]);
 
+  useEffect(() => {
+    if (!QR && !PDF417) {
+      setError("Debes seleccionar al menos una opción.");
+    } else {
+      setError("");
+    }
+  }, [QR, PDF417]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({
@@ -62,7 +72,6 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
       fechaHasta,
       horaHasta,
       selectedOption,
-      autoacreditacion,
       marcarAcreditacion,
       imprimeSticker,
     });
@@ -134,8 +143,8 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
           </div>
 
           <div className="flex items-center justify-between gap-2 p-3 col-span-full">
-            <Label className="m-0">Codigo:</Label>
-            <Switch label="QR" defaultChecked onChange={setAutoacreditacion} />
+            <Label className="m-0">Código:</Label>
+            <Switch label="QR" defaultChecked onChange={setQR} />
             <Tooltip
               content="Código de barra 2D con datos del DNI"
               position="top"
@@ -144,10 +153,16 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
               <Switch
                 label="PDF 417"
                 defaultChecked={false}
-                onChange={() => {}}
+                onChange={setPDF417}
               />
             </Tooltip>
           </div>
+
+          {error && (
+            <div className="w-full flex items-center justify-center mt-2 col-span-full">
+              <p className="text-red-500 text-sm text-center">{error}</p>
+            </div>
+          )}
           <div className="gap-2 p-3 col-span-full">
             <Label
               htmlFor="test"
