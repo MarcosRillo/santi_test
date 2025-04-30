@@ -7,7 +7,6 @@ import Input from "../input/InputField";
 import Radio from "../input/Radio";
 import Form from "../Form";
 import Button from "../../ui/button/Button";
-// import DatePicker from "@/components/form/date-picker";
 import { TimeIcon } from "../../../icons";
 import Switch from "../switch/Switch";
 import { Tooltip } from "@/components/ui/tooltip/Tooltip";
@@ -150,11 +149,23 @@ export default function ExampleFormTwo({ selectedRowData }: Props) {
             </Tooltip>
           </div>
           <div className="gap-2 p-3 col-span-full">
-            <Label htmlFor="test" className="flex items-center justify-start">
-              <Checkbox checked={isChecked} onChange={setIsChecked} />
+            <Label
+              htmlFor="test"
+              className="flex items-center justify-center gap-2"
+            >
+              <Checkbox
+                checked={isChecked}
+                onChange={setIsChecked}
+                className=""
+              />
               Visualizacion (en segundos)
             </Label>
-            <Input type="number" id="test" value="1" className=""/>
+            <Input
+              type="number"
+              id="test"
+              defaultValue="1"
+              className="max-w-3/4 text-center"
+            />
           </div>
           <div className="col-span-2">
             <h4 className="py-4 text-base font-medium text-gray-800 border-b border-gray-200 dark:border-gray-800 dark:text-white/90">

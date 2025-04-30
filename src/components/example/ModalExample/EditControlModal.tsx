@@ -21,9 +21,9 @@ export default function EditControlModal() {
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        className="max-w-[584px] p-5 lg:p-10"
+        className="max-w-[584px] mt-40"
       >
-        <div className="pt-60">
+        <div className="">
           <ExampleFormTwo selectedRowData={null} />
         </div>
       </Modal>

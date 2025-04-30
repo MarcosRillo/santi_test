@@ -7,11 +7,6 @@ import ExampleFormTwo from "@/components/form/example-form/ExampleFormTwo";
 
 export default function FormInModal() {
   const { isOpen, openModal, closeModal } = useModal();
-  // const handleSave = () => {
-  //   // Handle save logic here
-  //   console.log("Saving changes...");
-  //   closeModal();
-  // };
   return (
     <>
       <Button size="sm" onClick={openModal}>
@@ -35,9 +30,9 @@ export default function FormInModal() {
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        className="max-w-[584px] p-5 lg:p-10"
+        className="max-w-[584px] mt-40"
       >
-        <div className="pt-60">
+        <div className="">
         <ExampleFormTwo selectedRowData={null}/>
         </div>
       </Modal>
