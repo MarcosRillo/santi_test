@@ -95,17 +95,16 @@ export default function OtpForm() {
               strokeLinejoin="round"
             />
           </svg>
-          Back to dashboard
+          Back
         </Link>
       </div>
       <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
         <div className="mb-5 sm:mb-8">
           <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-            Two Step Verification
+            Validacion
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            A verification code has been sent to your mobile. Please enter it in
-            the field below.
+            Un codigo de verificación se envio a tu dispositivo. Por favor ingresa el codigo.
           </p>
         </div>
         <div>
@@ -113,7 +112,7 @@ export default function OtpForm() {
             <div className="space-y-5">
               {/* <!-- Email --> */}
               <div>
-                <Label>Type your 6 digits security code</Label>
+                <Label>Ingresa el codigo que te enviamos</Label>
                 <div className="flex gap-2 sm:gap-4" id="otp-container">
                   {otp.map((_, index) => (
                     <input
@@ -142,12 +141,12 @@ export default function OtpForm() {
                   onClick={handleSubmit}
                   className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
                 >
-                  Verify My Account
+                  Verificar el servidor
                 </button>
               </div>
             </div>
           </form>
-          <div className="mt-5">
+          {/* <div className="mt-5">
             <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
               Didn’t get the code?{" "}
               <Link
@@ -157,7 +156,7 @@ export default function OtpForm() {
                 Resend
               </Link>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
