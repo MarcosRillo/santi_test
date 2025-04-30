@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import FormInModal from "../example/ModalExample/FormInModal";
 import EditControlModal from "../example/ModalExample/EditControlModal";
+import ImpresionServerModal from "../example/ModalExample/ImpresionServerModal";
 
 import { PaperPlaneIcon, TrashBinIcon } from "@/icons";
-import { HiOutlinePrinter } from "react-icons/hi2";
 
 const tableData = [
   {
@@ -128,7 +128,7 @@ export default function AccessControl({
               />
             </div>
             <div className="">
-            <FormInModal />
+              <FormInModal />
             </div>
           </div>
         </div>
@@ -179,13 +179,11 @@ export default function AccessControl({
                       <button>
                         <TrashBinIcon className="text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-500" />
                       </button>
-                        <EditControlModal />
+                      <EditControlModal />
                       <button className="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-500">
                         <PaperPlaneIcon className="w-5 h-5" />
                       </button>
-                      <button className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">
-                        <HiOutlinePrinter className="w-5 h-5" />
-                      </button>
+                      <ImpresionServerModal />
                     </div>
                   </td>
                 </tr>
