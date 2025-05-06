@@ -178,7 +178,7 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
                   className=""
                 />
                 <Label htmlFor="test" className="m-0">
-                  Visualización (segundos)
+                  Visualización (segundoss)
                 </Label>
               </div>
 
