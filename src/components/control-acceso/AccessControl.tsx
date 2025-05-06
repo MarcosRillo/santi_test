@@ -175,14 +175,14 @@ export default function AccessControl({
                   </td>
                   <td className="px-6 py-[18px] text-center">
                     <div className="flex items-center justify-center gap-2 ">
-                      <button>
-                        <TrashBinIcon className="text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-500" />
-                      </button>
-                      <EditControlModal />
                       <button className="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-500">
                         <PaperPlaneIcon className="w-5 h-5" />
                       </button>
+                      <EditControlModal />
                       {/* <ImpresionServerModal setSelectedRowData={setSelectedRowData}/> */}
+                      <button>
+                        <TrashBinIcon className="text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-500" />
+                      </button>
                     </div>
                   </td>
                 </tr>

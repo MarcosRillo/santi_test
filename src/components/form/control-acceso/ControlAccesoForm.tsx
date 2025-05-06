@@ -45,7 +45,6 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
 
   const [QR, setQR] = useState(true);
   const [PDF417, setPDF417] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (selectedRowData) {
@@ -57,13 +56,19 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
     }
   }, [selectedRowData]);
 
-  useEffect(() => {
-    if (!QR && !PDF417) {
-      setError("Debes seleccionar al menos una opción.");
-    } else {
-      setError("");
+  const handleQRChange = (value: boolean) => {
+    setQR(value);
+    if (!value && !PDF417) {
+      setPDF417(true); // Si desactivás QR y PDF417 está apagado, lo activás
     }
-  }, [QR, PDF417]);
+  };
+
+  const handlePDF417Change = (value: boolean) => {
+    setPDF417(value);
+    if (!value && !QR) {
+      setQR(true); // Si desactivás PDF417 y QR está apagado, lo activás
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -145,48 +150,48 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
             </div>
           </div>
 
-          <div className="flex items-center justify-between gap-2 p-3 col-span-full">
+          <div className="flex items-center justify-center gap-2 py-3 col-span-1">
             <Label className="m-0">Código:</Label>
-            <Switch label="QR" defaultChecked onChange={setQR} />
+            <Switch label="QR" checked={QR} onChange={handleQRChange} />
             <Tooltip
               content="Código de barra 2D con datos del DNI"
               position="top"
               theme="dark"
             >
               <Switch
-                label="PDF 417"
-                defaultChecked={false}
-                onChange={setPDF417}
+                label="PDF417"
+                checked={PDF417}
+                onChange={handlePDF417Change}
               />
             </Tooltip>
           </div>
+          <Tooltip
+            content="Tiempo que muestra info en pantalla hasta próxima lectura [Segundos]"
+            position="top"
+            theme="dark"
+          >
+            <div className="flex items-center justify-center gap-4 py-3 col-span-1">
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  checked={isChecked}
+                  onChange={setIsChecked}
+                  className=""
+                />
+                <Label htmlFor="test" className="m-0">
+                  Visualización (segundoss)
+                </Label>
+              </div>
 
-          {error && (
-            <div className="w-full flex items-center justify-center mt-2 col-span-full">
-              <p className="text-red-500 text-sm text-center">{error}</p>
-            </div>
-          )}
-          <div className="gap-2 p-3 col-span-full flex items-center justify-start">
-            <Label
-              htmlFor="test"
-              className="flex items-center justify-start gap-2"
-            >
-              <Checkbox
-                checked={isChecked}
-                onChange={setIsChecked}
-                className=""
+              <Input
+                type="number"
+                id="test"
+                defaultValue="1"
+                min="1"
+                className="w-20 text-center"
+                disabled={!isChecked}
               />
-              Visualizacion (en segundos)
-            </Label>
-            <Input
-              type="number"
-              id="test"
-              defaultValue="1"
-              min="1"
-              className="max-w-2/4 text-center"
-              disabled={!isChecked}
-            />
-          </div>
+            </div>
+          </Tooltip>
           <div className="col-span-2">
             <h4 className="py-4 text-base font-medium text-gray-800 border-b border-gray-200 dark:border-gray-800 dark:text-white/90">
               Condiciones de control de acceso
@@ -207,7 +212,7 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
                 id="Premium"
                 name="roleSelect"
                 value="Premium"
-                label="AutoServicio (Camara Frontal)"
+                label="Auto Servicio (Camara Frontal)"
                 checked={selectedOption === "Premium"}
                 onChange={() => setSelectedOption("Premium")}
               />
@@ -241,7 +246,7 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
             </h4>
           </div>
 
-          <div className="flex items-center justify-start gap-6 p-3 col-span-full">
+          <div className="flex items-center justify-start gap-6 p-3 col-span-1">
             <Switch
               label="Marcar acreditacion"
               defaultChecked={marcarAcreditacion}
@@ -249,9 +254,9 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
             />
           </div>
 
-          <div className="flex items-center justify-start gap-6 p-3 col-span-full">
+          <div className="flex items-center justify-start gap-6 p-3 col-span-1">
             <Switch
-              label="Imprime sticker"
+              label="Imprime credencial"
               defaultChecked={imprimeSticker}
               onChange={setImprimeSticker}
             />
