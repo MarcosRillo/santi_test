@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import FormInModal from "../example/ModalExample/FormInModal";
 import EditControlModal from "../example/ModalExample/EditControlModal";
-import ImpresionServerModal from "../example/ModalExample/ImpresionServerModal";
 
 import { PaperPlaneIcon, TrashBinIcon } from "@/icons";
 
@@ -183,7 +182,7 @@ export default function AccessControl({
                       <button className="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-500">
                         <PaperPlaneIcon className="w-5 h-5" />
                       </button>
-                      <ImpresionServerModal />
+                      {/* <ImpresionServerModal setSelectedRowData={setSelectedRowData}/> */}
                     </div>
                   </td>
                 </tr>

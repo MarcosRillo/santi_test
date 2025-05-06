@@ -31,7 +31,7 @@ type Props = {
   selectedRowData: FileRow | null;
 };
 
-export default function ExampleFormTwo({ selectedRowData }: Props) {
+export default function ControlAccesoForm({ selectedRowData }: Props) {
   const [nombre, setNombre] = useState("");
   const [fechaDesde, setFechaDesde] = useState("");
   const [horaDesde, setHoraDesde] = useState("");

@@ -72,14 +72,6 @@ const navItems: NavItem[] = [
   //   ],
   // },
   {
-    name: "Formularios",
-    icon: <TableIcon />,
-    subItems: [
-      { name: "Vendimia 2025", path: "/formularios", pro: false },
-      // { name: "Vendimia 2024", path: "/data-tables", pro: false },
-    ],
-  },
-  {
     name: "Control de Acceso",
     icon: <RiRemoteControlLine className="h-6 w-5"/>,
     path: "/control-acceso",

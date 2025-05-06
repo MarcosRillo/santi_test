@@ -2,7 +2,7 @@
 import React from "react";
 import { Modal } from "../../ui/modal";
 import { useModal } from "@/hooks/useModal";
-import ExampleFormTwo from "@/components/form/example-form/ExampleFormTwo";
+import ExampleFormTwo from "@/components/form/control-acceso/ControlAccesoForm";
 import { LuPencil } from "react-icons/lu";
 
 
