@@ -7,7 +7,6 @@ import { useSidebar } from "../context/SidebarContext";
 import {
   ChevronDownIcon,
   HorizontaLDots,
-  TableIcon,
   // PageIcon,
   // ArrowRightIcon,
   // BoxCubeIcon,
@@ -23,7 +22,6 @@ import {
   // UserCircleIcon,
 } from "../icons/index";
 import { RiRemoteControlLine } from "react-icons/ri";
-import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
   name: string;
@@ -385,7 +383,7 @@ const AppSidebar: React.FC = () => {
     >
       <div
         className={`py-8 flex  ${
-          !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
+          !isExpanded && !isHovered ? "lg:justify-center" : "justify-center"
         }`}
       >
         <Link href="/">
@@ -393,14 +391,14 @@ const AppSidebar: React.FC = () => {
             <>
               <Image
                 className="dark:hidden"
-                src="/images/logo/logo.svg"
+                src="/images/logo/logo-conti.png"
                 alt="Logo"
                 width={150}
                 height={40}
               />
               <Image
                 className="hidden dark:block"
-                src="/images/logo/logo-dark.svg"
+                src="/images/logo/logo-conti.png"
                 alt="Logo"
                 width={150}
                 height={40}
@@ -408,7 +406,7 @@ const AppSidebar: React.FC = () => {
             </>
           ) : (
             <Image
-              src="/images/logo/logo-icon.svg"
+              src="/images/logo/logo-conti.png"
               alt="Logo"
               width={32}
               height={32}
@@ -428,7 +426,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Menu"
+                  ""
                 ) : (
                   <HorizontaLDots />
                 )}
@@ -444,7 +442,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Support"
+                  ""
                 ) : (
                   <HorizontaLDots />
                 )}
@@ -460,7 +458,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Others"
+                  ""
                 ) : (
                   <HorizontaLDots />
                 )}
@@ -469,7 +467,6 @@ const AppSidebar: React.FC = () => {
             </div>
           </div>
         </nav>
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
       </div>
     </aside>
   );
