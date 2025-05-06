@@ -45,7 +45,6 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
 
   const [QR, setQR] = useState(true);
   const [PDF417, setPDF417] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (selectedRowData) {
@@ -57,13 +56,19 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
     }
   }, [selectedRowData]);
 
-  useEffect(() => {
-    if (!QR && !PDF417) {
-      setError("Debes seleccionar al menos una opción.");
-    } else {
-      setError("");
+  const handleQRChange = (value: boolean) => {
+    setQR(value);
+    if (!value && !PDF417) {
+      setPDF417(true); // Si desactivás QR y PDF417 está apagado, lo activás
     }
-  }, [QR, PDF417]);
+  };
+
+  const handlePDF417Change = (value: boolean) => {
+    setPDF417(value);
+    if (!value && !QR) {
+      setQR(true); // Si desactivás PDF417 y QR está apagado, lo activás
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -147,7 +152,7 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
 
           <div className="flex items-center justify-between gap-2 p-3 col-span-full">
             <Label className="m-0">Código:</Label>
-            <Switch label="QR" defaultChecked onChange={setQR} />
+            <Switch label="QR" checked={QR} onChange={handleQRChange} />
             <Tooltip
               content="Código de barra 2D con datos del DNI"
               position="top"
@@ -155,17 +160,11 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
             >
               <Switch
                 label="PDF 417"
-                defaultChecked={false}
-                onChange={setPDF417}
+                checked={PDF417}
+                onChange={handlePDF417Change}
               />
             </Tooltip>
           </div>
-
-          {error && (
-            <div className="w-full flex items-center justify-center mt-2 col-span-full">
-              <p className="text-red-500 text-sm text-center">{error}</p>
-            </div>
-          )}
           <div className="gap-2 p-3 col-span-full flex items-center justify-start">
             <Label
               htmlFor="test"
