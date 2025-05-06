@@ -150,7 +150,7 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
             </div>
           </div>
 
-          <div className="flex items-center justify-between gap-2 p-3 col-span-full">
+          <div className="flex items-center justify-center gap-2 py-3 col-span-1">
             <Label className="m-0">Código:</Label>
             <Switch label="QR" checked={QR} onChange={handleQRChange} />
             <Tooltip
@@ -159,33 +159,39 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
               theme="dark"
             >
               <Switch
-                label="PDF 417"
+                label="PDF417"
                 checked={PDF417}
                 onChange={handlePDF417Change}
               />
             </Tooltip>
           </div>
-          <div className="gap-2 p-3 col-span-full flex items-center justify-start">
-            <Label
-              htmlFor="test"
-              className="flex items-center justify-start gap-2"
-            >
-              <Checkbox
-                checked={isChecked}
-                onChange={setIsChecked}
-                className=""
+          <Tooltip
+            content="Tiempo que muestra info en pantalla hasta próxima lectura [Segundos]"
+            position="top"
+            theme="dark"
+          >
+            <div className="flex items-center justify-center gap-4 py-3 col-span-1">
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  checked={isChecked}
+                  onChange={setIsChecked}
+                  className=""
+                />
+                <Label htmlFor="test" className="m-0">
+                  Visualización (segundos)
+                </Label>
+              </div>
+
+              <Input
+                type="number"
+                id="test"
+                defaultValue="1"
+                min="1"
+                className="w-20 text-center"
+                disabled={!isChecked}
               />
-              Visualizacion (en segundos)
-            </Label>
-            <Input
-              type="number"
-              id="test"
-              defaultValue="1"
-              min="1"
-              className="max-w-2/4 text-center"
-              disabled={!isChecked}
-            />
-          </div>
+            </div>
+          </Tooltip>
           <div className="col-span-2">
             <h4 className="py-4 text-base font-medium text-gray-800 border-b border-gray-200 dark:border-gray-800 dark:text-white/90">
               Condiciones de control de acceso
@@ -206,7 +212,7 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
                 id="Premium"
                 name="roleSelect"
                 value="Premium"
-                label="AutoServicio (Camara Frontal)"
+                label="Auto Servicio (Camara Frontal)"
                 checked={selectedOption === "Premium"}
                 onChange={() => setSelectedOption("Premium")}
               />
@@ -240,7 +246,7 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
             </h4>
           </div>
 
-          <div className="flex items-center justify-start gap-6 p-3 col-span-full">
+          <div className="flex items-center justify-start gap-6 p-3 col-span-1">
             <Switch
               label="Marcar acreditacion"
               defaultChecked={marcarAcreditacion}
@@ -248,9 +254,9 @@ export default function ControlAccesoForm({ selectedRowData }: Props) {
             />
           </div>
 
-          <div className="flex items-center justify-start gap-6 p-3 col-span-full">
+          <div className="flex items-center justify-start gap-6 p-3 col-span-1">
             <Switch
-              label="Imprime sticker"
+              label="Imprime credencial"
               defaultChecked={imprimeSticker}
               onChange={setImprimeSticker}
             />
